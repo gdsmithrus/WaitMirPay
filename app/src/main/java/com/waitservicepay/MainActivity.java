@@ -113,7 +113,7 @@ public class MainActivity extends Activity{
         bindingSetting.textHeader.setText("\nНастройки\n");
         bindingSetting.textAbout.setText("Smith App\n" +
                 "WaitServicePay\n\n" +
-                "Version 1.1.2\n");
+                "Version 1.1.3\n");
         bindingSetting.switchBlockProgramDisable.setText("Закрыть\nпосле события ");
         bindingSetting.switchBlockProgramDisable.setChecked(!isBlockExitProgramEnable);
         bindingSetting.textViewTimer.setText("Таймер: ");
@@ -132,7 +132,6 @@ public class MainActivity extends Activity{
                     }
                     bindingSetting.editTextNumber.setHint(v.getText());
                     timeExit = Integer.parseInt(v.getText().toString());
-                    bindingSetting.editTextNumber.setText("");
                 }
 
                 View view = getCurrentFocus();
@@ -162,6 +161,7 @@ public class MainActivity extends Activity{
         binding.textView.setText("Запуск");
 
         isBlockExitProgramEnable = !bindingSetting.switchBlockProgramDisable.isChecked();
+        bindingSetting.editTextNumber.setText("");
 
         saveParam();
 
