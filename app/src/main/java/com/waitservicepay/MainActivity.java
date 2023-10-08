@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -129,8 +130,18 @@ public class MainActivity extends Activity{
                     else if(maxTime < value){
                         v.setText(Integer.toString(maxTime));
                     }
+                    bindingSetting.editTextNumber.setHint(v.getText());
+                    timeExit = Integer.parseInt(v.getText().toString());
+                    bindingSetting.editTextNumber.setText("");
                 }
-                return false;
+
+                View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
+                return true;
             }
         });
 
@@ -151,12 +162,6 @@ public class MainActivity extends Activity{
         binding.textView.setText("Запуск");
 
         isBlockExitProgramEnable = !bindingSetting.switchBlockProgramDisable.isChecked();
-
-        if(!bindingSetting.editTextNumber.getText().toString().isEmpty()){
-            timeExit = Integer.parseInt(bindingSetting.editTextNumber.getText().toString());
-            bindingSetting.editTextNumber.setHint(String.valueOf(timeExit));
-            bindingSetting.editTextNumber.setText("");
-        }
 
         saveParam();
 
