@@ -113,7 +113,7 @@ public class MainActivity extends Activity{
         bindingSetting.textHeader.setText("\nНастройки\n");
         bindingSetting.textAbout.setText("Smith App\n" +
                 "WaitServicePay\n\n" +
-                "Version 1.1\n");
+                "Version 1.1.2\n");
         bindingSetting.switchBlockProgramDisable.setText("Закрыть\nпосле события ");
         bindingSetting.switchBlockProgramDisable.setChecked(!isBlockExitProgramEnable);
         bindingSetting.textViewTimer.setText("Таймер: ");
